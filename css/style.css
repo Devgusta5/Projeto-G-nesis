@@ -244,24 +244,24 @@ body, html {
   height: 60vh;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   position: relative;
-  margin-top: 80px;
+  margin-top: 80px; 
 }
 
 .hero1 {
   background-image: url('../assets/future.jpg');
 }
 .hero2 {
-  background-image: url('../assets/future.jpg');
+  background-image: url('../assets/future2.jpg');
 }
 .hero3 {
-  background-image: url('../assets/future.jpg');
+  background-image: url('../assets/future3.jpg');
 }
 
 .hero-content {
