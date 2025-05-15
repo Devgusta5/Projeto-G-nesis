@@ -255,13 +255,13 @@ body, html {
 }
 
 .hero1 {
-  background-image: url('assets/future.jpg');
+  background-image: url('../assets/future.jpg');
 }
 .hero2 {
-  background-image: url('assets/future.jpg');
+  background-image: url('../assets/future.jpg');
 }
 .hero3 {
-  background-image: url('assets/future.jpg');
+  background-image: url('../assets/future.jpg');
 }
 
 .hero-content {
