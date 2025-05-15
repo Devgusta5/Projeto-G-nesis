@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <!-- Fonte Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    
+    <!-- Fonte Raleway -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Wasome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Gênesis - Produtos</title>
+  <link rel="stylesheet" href="../css/products.css">
+  
+</head>
+<body>
+  <!-- Tela de Carregamento -->
+  <div id="loading-screen">
+    <div class="loader">
+        
+        <!-- Partículas de fundo -->
+  <canvas id="particles"></canvas>  
+    </div>
+  </div>
+
+  
+
+  <!-- Navbar futurista aprimorada -->
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="../index/index.html">X - GÊNESIS</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="../index/index.html">
+                    <i class="fas fa-home"></i>Início
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="../index/products.html">
+                    <i class="fas fa-box-open"></i>Produtos
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);">
+                    <i class="fas fa-shopping-cart"></i>Carrinho
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);">
+                    <i class="fas fa-sign-in-alt"></i>Login
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+  
+  <section id="produtos" class="produtos">
+    <h2>Produtos</h2>
+    <p>Escolha a pílula que irá desbloquear seu poder!</p>
+  
+    <div class="produto-lista">
+  
+      <!-- Card 1 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/f1.jpg" alt="Pílula do Poder">
+            <h3>Pílula do Poder</h3>
+          </div>
+          <div class="card-back">
+            <p>Força sobre-humana. Sinta o poder nas suas veias!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 2 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill2.jpg" alt="Pílula da Velocidade">
+            <h3>Pílula da Velocidade</h3>
+          </div>
+          <div class="card-back">
+            <p>Corra mais rápido que o som!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 3 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill3.jpg" alt="Pílula da Invisibilidade">
+            <h3>Pílula da Invisibilidade</h3>
+          </div>
+          <div class="card-back">
+            <p>Desapareça à vontade. Seja um fantasma moderno!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 4 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill4.jpg" alt="Pílula da Mente">
+            <h3>Pílula da Mente</h3>
+          </div>
+          <div class="card-back">
+            <p>Expanda sua inteligência além dos limites humanos.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 5 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill5.jpg" alt="Pílula do Tempo">
+            <h3>Pílula do Tempo</h3>
+          </div>
+          <div class="card-back">
+            <p>Controle o tempo: acelere, desacelere, pause.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 6 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill6.jpg" alt="Pílula do Fogo">
+            <h3>Pílula do Fogo</h3>
+          </div>
+          <div class="card-back">
+            <p>Controle as chamas como um verdadeiro elemental.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 7 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill7.jpg" alt="Pílula do Gelo">
+            <h3>Pílula do Gelo</h3>
+          </div>
+          <div class="card-back">
+            <p>Congele qualquer coisa com um simples toque.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 8 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill8.jpg" alt="Pílula da Cura">
+            <h3>Pílula da Cura</h3>
+          </div>
+          <div class="card-back">
+            <p>Regeneração instantânea. Fique imbatível!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 9 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill9.jpg" alt="Pílula do Voo">
+            <h3>Pílula do Voo</h3>
+          </div>
+          <div class="card-back">
+            <p>Alcance os céus e voe livremente!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 10 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill10.jpg" alt="Pílula da Energia">
+            <h3>Pílula da Energia</h3>
+          </div>
+          <div class="card-back">
+            <p>Fique elétrico! Energia ilimitada por 24h.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 11 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill11.jpg" alt="Pílula da Telepatia">
+            <h3>Pílula da Telepatia</h3>
+          </div>
+          <div class="card-back">
+            <p>Leia pensamentos e comunique-se sem falar.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 12 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill12.jpg" alt="Pílula da Multiplicação">
+            <h3>Pílula da Multiplicação</h3>
+          </div>
+          <div class="card-back">
+            <p>Crie cópias de si mesmo para dominar tudo!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 13 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill13.jpg" alt="Pílula do Magnetismo">
+            <h3>Pílula do Magnetismo</h3>
+          </div>
+          <div class="card-back">
+            <p>Controle metais como um verdadeiro imã humano.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 14 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill14.jpg" alt="Pílula da Camuflagem">
+            <h3>Pílula da Camuflagem</h3>
+          </div>
+          <div class="card-back">
+            <p>Se mescle ao ambiente. Ninguém vai te notar!</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 15 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill15.jpg" alt="Pílula da Imortalidade">
+            <h3>Pílula da Imortalidade</h3>
+          </div>
+          <div class="card-back">
+            <p>Viva para sempre. O fim não é mais uma opção.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 16 -->
+      <div class="produto-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="../assets/pill15.jpg" alt="Pílula do Sexo">
+            <h3>Pílula do sexo</h3>
+          </div>
+          <div class="card-back">
+            <p>Transe como um touro.</p>
+            <div class="acoes">
+              <button class="fav-btn">❤️ Favoritar</button>
+              <button class="carrinho-btn">🛒 Carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Projeto Gênesis. Todos os direitos reservados.</p>
+  </footer>
+  
+  
+
+  <!-- Bootstrap JS (no final do body) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="../script/script.js"></script>
+  </body>
+</html>
