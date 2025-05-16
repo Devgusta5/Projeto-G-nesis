@@ -240,19 +240,37 @@ body, html {
 }
 
 /* Hero Section */
+.carousel-item {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  display: block; /* Não usar display: none */
+}
+
+.carousel-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+}
+
 .hero-slide {
   height: 60vh;
   background-size: cover;
   background-position: center;
-  background-attachment: scroll;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;   /* centraliza verticalmente */
+  justify-content: center; /* centraliza horizontalmente */
   text-align: center;
-  color: #fff;
   position: relative;
-  margin-top: 80px; 
+  margin-top: 80px;
 }
+
 
 .hero1 {
   background-image: url('../assets/future.jpg');
@@ -268,7 +286,10 @@ body, html {
   background: rgba(0, 0, 0, 0.6);
   padding: 30px;
   border-radius: 10px;
+  text-align: center; 
+ margin-top: 100px;
 }
+
 
 .hero-content h1 {
   font-size: 3em;
@@ -298,6 +319,7 @@ body, html {
   background-color: #e60000;
 }
 
+
 /* Produtos */
 .produtos {
   padding: 6rem 2rem 4rem;
@@ -318,7 +340,7 @@ body, html {
   padding: 1.5rem;
   border: 1px solid #0ff;
   border-radius: 1rem;
-  width: 200px;
+  width: 350px;
   height: 350px; /* altura fixa opcional */
   overflow: hidden; /* impede que o conteúdo saia da caixa */
   transition: transform 0.3s;
@@ -423,7 +445,7 @@ footer {
     font-size: 2em;
   }
   .hero-content {
-    padding: 15px;
+    padding: 10px;
   }
   .btn-cta {
     padding: 10px 18px;
