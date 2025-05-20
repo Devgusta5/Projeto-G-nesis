@@ -130,11 +130,16 @@ document.addEventListener('DOMContentLoaded', function() {
   let carrinho = localStorage.getItem('produtosCarrinho');
   if (carrinho) {
     carrinho = JSON.parse(carrinho);
-    carrinho = carrinho.filter(prod => prod.id !== prodId);
+
+    // Converta os dois valores para o mesmo tipo antes de comparar
+    carrinho = carrinho.filter(prod => String(prod.id) !== String(prodId));
+
     localStorage.setItem('produtosCarrinho', JSON.stringify(carrinho));
     mostrarCarrinho();
   }
-  }
+}
+
+
 
   // Função para carregar carrinho do usuário e favoritos do localStorage
   function carregarCarrinho() {
