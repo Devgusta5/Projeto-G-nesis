@@ -1,0 +1,493 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Raleway', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+/* Fontes externas necessárias */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Orbitron:wght@600&display=swap');
+
+/* Tela de carregamento */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Partículas de fundo */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: transparent;
+}
+
+/* Loader: bolinhas pulsantes */
+.loader {
+  margin-top: 50px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.loader span {
+  width: 15px;
+  height: 15px;
+  background: #0ff;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+.loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+}
+
+/* Texto abaixo do loader */
+#loading-screen > span {
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  animation: pulseText 2s infinite ease-in-out;
+  letter-spacing: 1.5px;
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+
+/*---------- NAVBAR ESTILO FUTURISTA ------------*/
+.navbar-logo {
+  padding: 15px;
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+}
+
+.navbar-mainbg {
+  background-color: #000;
+  padding: 0px;
+  height: 120px; /* altura total da navbar */
+}
+
+/* Itens do menu com padding maior */
+#navbarSupportedContent ul li a {
+  color: #0ff !important;
+  padding: 25px 30px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Item ativo com visual mais "forte" */
+#navbarSupportedContent > ul > li.active > a {
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* Hori-selector com altura maior */
+.hori-selector {
+  height: 70px;
+  margin-top: 5px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Botões em telas menores */
+@media (max-width: 991px) {
+  #navbarSupportedContent ul li a {
+    padding: 18px 30px;
+  }
+
+  .hori-selector {
+    height: 60px;
+    margin-left: 10px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+}
+
+.hori-selector .right,
+.hori-selector .left {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #0a0a0a;
+  bottom: 10px;
+}
+
+.hori-selector .right {
+  right: -25px;
+}
+
+.hori-selector .left {
+  left: -25px;
+}
+
+.hori-selector .right:before,
+.hori-selector .left:before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.hori-selector .right:before {
+  bottom: 0;
+  right: -25px;
+}
+
+.hori-selector .left:before {
+  bottom: 0;
+  left: -25px;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-custom {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  .navbar-expand-custom .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-expand-custom .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-expand-custom .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  #navbarSupportedContent ul li a {
+    padding: 12px 30px;
+  }
+
+  .hori-selector {
+    margin-top: 0px;
+    margin-left: 10px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .hori-selector .left,
+  .hori-selector .right {
+    right: 10px;
+  }
+
+  .hori-selector .left {
+    top: -25px;
+    left: auto;
+  }
+
+  .hori-selector .right {
+    bottom: -25px;
+  }
+
+  .hori-selector .left:before {
+    left: -25px;
+    top: -25px;
+  }
+
+  .hori-selector .right:before {
+    bottom: -25px;
+    left: -25px;
+  }
+}
+
+/* Hero Section */
+.carousel-item {
+  position: relative;
+  width: 100%;
+  height: 48vh;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  display: block; /* Não usar display: none */
+}
+
+.carousel-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slide {
+  width: 100%;
+  
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  position: relative;
+  margin-top: 0;
+  display: block; /* Não use flex aqui */
+}
+
+
+.hero1 {
+  background-image: url('../assets/future.jpg');
+}
+.hero2 {
+  background-image: url('../assets/future2.jpg');
+}
+.hero3 {
+  background-image: url('../assets/future3.jpg');
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 100px auto 0 auto; /* centraliza horizontalmente */
+  max-width: 800px;          /* largura máxima */
+  width: 90%;                /* responsivo em telas pequenas */
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+}
+
+
+.hero-content h1 {
+  font-size: 3em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #ff4d4d;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #e60000;
+}
+
+
+/* Produtos */
+.produtos {
+  padding: 6rem 2rem 4rem;
+  background: #111;
+  text-align: center;
+}
+
+.produto-lista {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.produto-card {
+  background: #222;
+  padding: 1.5rem;
+  border: 1px solid #0ff;
+  border-radius: 1rem;
+  width: 350px;
+  height: 350px; /* altura fixa opcional */
+  overflow: hidden; /* impede que o conteúdo saia da caixa */
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.produto-card:hover {
+  transform: scale(1.05);
+}
+
+.produto-card h3 {
+  color: #0ff;
+  margin-bottom: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.produto-card button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #0ff;
+  color: #000;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+/* Sobre */
+.sobre {
+  padding: 4rem 2rem;
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.sobre h2 {
+  color: #0ff;
+  margin-bottom: 1rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.sobre p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Footer */
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #000;
+  border-top: 1px solid #0ff;
+  font-size: 0.9rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Responsividade geral */
+@media (max-width: 1200px) {
+  .produto-lista {
+    gap: 1.2rem;
+  }
+  .produto-card {
+    width: 180px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-mainbg {
+    height: auto;
+    padding-bottom: 10px;
+  }
+  .navbar-logo {
+    font-size: 2rem;
+    padding: 10px;
+  }
+  .produtos {
+    padding: 3rem 1rem 2rem;
+  }
+  .produto-card {
+    width: 160px;
+    height: 300px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .produto-lista {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .produto-card {
+    width: 90vw;
+    max-width: 350px;
+    height: auto;
+  }
+  .hero-content h1 {
+    font-size: 2em;
+  }
+  .hero-content {
+    padding: 10px;
+  }
+  .btn-cta {
+    padding: 10px 18px;
+    font-size: 1em;
+  }
+  .sobre {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 1.3rem;
+    padding: 7px;
+  }
+  .produtos {
+    padding: 2rem 0.5rem 1rem;
+  }
+  .produto-card {
+    width: 98vw;
+    max-width: 98vw;
+    font-size: 0.95em;
+    padding: 0.7rem;
+  }
+  .hero-content h1 {
+    font-size: 1.2em;
+  }
+  .hero-content p {
+    font-size: 1em;
+  }
+  .btn-cta {
+    padding: 8px 10px;
+    font-size: 0.95em;
+  }
+  footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+}
+
+
+
+

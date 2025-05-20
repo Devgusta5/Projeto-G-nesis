@@ -1,0 +1,302 @@
+/*---------- NAVBAR ESTILO FUTURISTA ------------*/
+.navbar-logo {
+  padding: 15px;
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+}
+
+.navbar-mainbg {
+  background-color: #000;
+  padding: 0px;
+  height: 120px; /* altura total da navbar */
+}
+
+/* Itens do menu com padding maior */
+#navbarSupportedContent ul li a {
+  color: #0ff !important;
+  padding: 25px 30px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Item ativo com visual mais "forte" */
+#navbarSupportedContent > ul > li.active > a {
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* Hori-selector com altura maior */
+.hori-selector {
+  height: 70px;
+  margin-top: 5px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Botões em telas menores */
+@media (max-width: 991px) {
+  #navbarSupportedContent ul li a {
+    padding: 18px 30px;
+  }
+
+  .hori-selector {
+    height: 60px;
+    margin-left: 10px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+}
+
+.hori-selector .right,
+.hori-selector .left {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #0a0a0a;
+  bottom: 10px;
+}
+
+.hori-selector .right {
+  right: -25px;
+}
+
+.hori-selector .left {
+  left: -25px;
+}
+
+.hori-selector .right:before,
+.hori-selector .left:before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.hori-selector .right:before {
+  bottom: 0;
+  right: -25px;
+}
+
+.hori-selector .left:before {
+  bottom: 0;
+  left: -25px;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-custom {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  .navbar-expand-custom .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-expand-custom .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-expand-custom .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  #navbarSupportedContent ul li a {
+    padding: 12px 30px;
+  }
+
+  .hori-selector {
+    margin-top: 0px;
+    margin-left: 10px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .hori-selector .left,
+  .hori-selector .right {
+    right: 10px;
+  }
+
+  .hori-selector .left {
+    top: -25px;
+    left: auto;
+  }
+
+  .hori-selector .right {
+    bottom: -25px;
+  }
+
+  .hori-selector .left:before {
+    left: -25px;
+    top: -25px;
+  }
+
+  .hori-selector .right:before {
+    bottom: -25px;
+    left: -25px;
+  }
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background: #000;
+  border-top: 1px solid #0ff;
+  font-size: 0.9rem;
+  font-family: 'Raleway', sans-serif;
+  padding: 1rem 0;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Responsividade geral */
+@media (max-width: 1200px) {
+  .produto-lista {
+    gap: 1.2rem;
+  }
+  .produto-card {
+    width: 180px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-mainbg {
+    height: auto;
+    padding-bottom: 10px;
+  }
+  .navbar-logo {
+    font-size: 2rem;
+    padding: 10px;
+  }
+  .produtos {
+    padding: 3rem 1rem 2rem;
+  }
+  .produto-card {
+    width: 160px;
+    height: 300px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .produto-lista {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .produto-card {
+    width: 90vw;
+    max-width: 350px;
+    height: auto;
+  }
+  .hero-content h1 {
+    font-size: 2em;
+  }
+  .hero-content {
+    padding: 10px;
+  }
+  .btn-cta {
+    padding: 10px 18px;
+    font-size: 1em;
+  }
+  .sobre {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 1.3rem;
+    padding: 7px;
+  }
+  .produtos {
+    padding: 2rem 0.5rem 1rem;
+  }
+  .produto-card {
+    width: 98vw;
+    max-width: 98vw;
+    font-size: 0.95em;
+    padding: 0.7rem;
+  }
+  .hero-content h1 {
+    font-size: 1.2em;
+  }
+  .hero-content p {
+    font-size: 1em;
+  }
+  .btn-cta {
+    padding: 8px 10px;
+    font-size: 0.95em;
+  }
+  footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+}
+
+
+body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      
+    }
+
+    .carrinho-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #141414;
+      border: 2px solid #00aaff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00aaff55;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00aaff;
+      margin-bottom: 30px;
+    }
+
+    .produto-item {
+      background: #1c1c1c;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 5px solid #6200ea;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #6200ea55;
+    }
+
+    .produto-item span {
+      display: block;
+      font-size: 1.1em;
+    }
+
+    .btn-finalizar {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #00aaff;
+      color: #fff;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-finalizar:hover {
+      background-color: #0088cc;
+    }

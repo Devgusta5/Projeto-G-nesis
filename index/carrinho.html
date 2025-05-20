@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <!-- Fonte Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    
+    <!-- Fonte Raleway -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Wasome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Gênesis </title>
+  <link rel="stylesheet" href="../css/carrinho.css">
+  
+</head>
+<body>
+  
+
+</div>
+
+<!-- Navbar futurista aprimorada -->
+<nav class="navbar navbar-expand-lg navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="index.html">X - GÊNESIS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <!-- Remova a div .hori-selector se não usa animação -->
+            <li class="nav-item ">
+                <a class="nav-link" href="../index.html">
+                    <i class="fas fa-home"></i> Início
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../index/products.html">
+                    <i class="fas fa-box-open"></i> Produtos
+                </a>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav-link" href="javascript:void(0);">
+                    <i class="fas fa-shopping-cart"></i> Carrinho
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="app.html">
+                    <i class="fas fa-mobile-alt"></i> App
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user.html">
+                    <i class="fas fa-sign-in-alt"></i> Conta
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+  
+  
+<!-- Meu conteudo  -->
+
+<div class="carrinho-container" style="margin-bottom: 500px;  margin-top: 50px;">
+  <h2>🛒 Seu Carrinho</h2>
+  <div id="lista-carrinho">
+    <p>Carregando seus itens...</p>
+  </div>
+  <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+</div>
+
+<footer>
+  <p>&copy; 2025 Projeto Gênesis. Todos os direitos reservados.</p>
+</footer>
+
+<!-- Seu script personalizado -->
+<script defer src="script/script.js"></script>
+
+<!-- jQuery COMPLETO -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+//código executado no carregamento da página
+document.addEventListener('DOMContentLoaded', function() {
+  carregarCarrinho();
+});
+
+
+  // Config Firebase
+  const firebaseConfig = {
+  apiKey: "AIzaSyDCUdLUtSM0K1AcoKLNTOfawQ9mD348aVc",
+  authDomain: "projeto---genesis.firebaseapp.com",
+  projectId: "projeto---genesis",
+  };
+
+  // Inicializa o Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  // Função para remover produto do carrinho (Firebase)
+  function removerProdutoFirebase(prodId) {
+  const user = auth.currentUser;
+  if (!user) return;
+  db.collection('carrinhos').doc(user.uid).get().then(doc => {
+    const dados = doc.data();
+    let produtos = dados?.produtos || [];
+    produtos = produtos.filter(prod => prod.id !== prodId);
+    db.collection('carrinhos').doc(user.uid).set({ produtos })
+    .then(carregarCarrinho);
+  });
+  }
+
+  // Função para remover produto do carrinho (localStorage)
+  function removerProdutoLocal(prodId) {
+  let carrinho = localStorage.getItem('produtosCarrinho');
+  if (carrinho) {
+    carrinho = JSON.parse(carrinho);
+    carrinho = carrinho.filter(prod => prod.id !== prodId);
+    localStorage.setItem('produtosCarrinho', JSON.stringify(carrinho));
+    mostrarCarrinho();
+  }
+  }
+
+  // Função para carregar carrinho do usuário e favoritos do localStorage
+  function carregarCarrinho() {
+    const lista = document.getElementById('lista-carrinho');
+  let carrinho = localStorage.getItem('produtosCarrinho');
+  
+  if (carrinho) {
+    carrinho = JSON.parse(carrinho);
+    if (carrinho.length > 0) {
+      lista.innerHTML = carrinho.map(prod =>
+        `<div class="produto-item">
+          <img src="${prod.img}" alt="${prod.nome}" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-bottom:8px;">
+          <span><strong>${prod.nome}</strong></span><br>
+          <span style="font-size:0.95em;">${prod.descricao || ''}</span><br>
+          <button class="btn btn-danger btn-sm ml-2" onclick="removerProdutoLocal('${prod.id}')">
+            <i class="fas fa-trash"></i> Excluir
+          </button>
+        </div>`
+      ).join('');
+    } else {
+      lista.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    }
+  } else {
+    lista.innerHTML = '<p>Seu carrinho está vazio.</p>';
+  }
+  }
+
+  // Função para finalizar compra
+  function finalizarCompra() {
+  window.open(
+    'landbot.html',     // URL
+    'LandbotPopup',     // Nome da janela
+    'width=600,height=600,resizable=no,scrollbars=yes' // Configurações
+   
+  );
+}
+
+
+  // Mostra produtos do carrinho salvos no localStorage
+  function mostrarCarrinho() {
+  const lista = document.getElementById('lista-carrinho');
+  let carrinho = localStorage.getItem('produtosCarrinho');
+  if (carrinho) {
+    carrinho = JSON.parse(carrinho);
+    if (carrinho.length > 0) {
+      lista.innerHTML = carrinho.map(prod =>
+        `<div class="produto-item">
+          <img src="${prod.img}" alt="${prod.nome}" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-bottom:8px;">
+          <span><strong>${prod.nome}</strong></span><br>
+          <span style="font-size:0.95em;">${prod.descricao || ''}</span><br>
+          <button class="btn btn-danger btn-sm ml-2" onclick="removerProdutoLocal('${prod.id}')">
+            <i class="fas fa-trash"></i> Excluir
+          </button>
+        </div>`
+      ).join('');
+    } else {
+      lista.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    }
+  } else {
+    lista.innerHTML = '<p>Seu carrinho está vazio.</p>';
+  }
+}
+
+  // Inicialização correta do carrinho
+  window.addEventListener('DOMContentLoaded', function() {
+  auth.onAuthStateChanged(user => {
+    if (user) {
+    carregarCarrinho(); // Carrinho do Firebase
+    } else {
+    mostrarCarrinho();  // Carrinho do localStorage
+    }
+  });
+  });
+
+
+  // Sincroniza os dados do localStorage entre as páginas
+  function sincronizarDados() {
+    // Verifica se há dados no localStorage
+    const carrinho = JSON.parse(localStorage.getItem('produtosCarrinho') || '[]');
+    const favoritos = JSON.parse(localStorage.getItem('produtosFavoritos') || '[]');
+  
+    // Atualiza o badge do carrinho na navbar
+    atualizarBadgeCarrinho(carrinho);
+  
+    // Exibe os dados no console para depuração
+    console.log('Carrinho:', carrinho);
+    console.log('Favoritos:', favoritos);
+  }
+  
+  // Atualiza o badge do carrinho na navbar
+  function atualizarBadgeCarrinho(carrinho) {
+    const badge = document.getElementById('carrinho-badge');
+    if (badge) {
+      badge.textContent = carrinho.length;
+      badge.style.display = carrinho.length > 0 ? 'inline-block' : 'none';
+    }
+  }
+  
+  // Inicializa a sincronização ao carregar a página
+  document.addEventListener('DOMContentLoaded', sincronizarDados);
+</script>

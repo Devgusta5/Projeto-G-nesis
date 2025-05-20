@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <!-- Fonte Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+  <!-- Fonte Raleway -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Wasome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Firebase App (obrigatório) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+
+<!-- Firebase Auth (para autenticação) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+
+<!-- Firebase Firestore (para banco de dados) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Gênesis - Produtos</title>
+  <link rel="stylesheet" href="../css/products.css">
+
+</head>
+
+<body>
+
+  <!-- Navbar futurista aprimorada -->
+  <nav class="navbar navbar-expand-lg navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="../index.html">X - GÊNESIS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white"></i>
+
+      
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+
+
+  <!-- Barra de pesquisa --> 
+        <li class="nav-item search-item">
+  <form id="searchForm" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar produto" aria-label="Search" id="searchInput">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+</li>
+
+
+
+        <li class="nav-item ">
+          <a class="nav-link" href="../index.html">
+            <i class="fas fa-home"></i> Início
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="products.html">
+            <i class="fas fa-box-open"></i> Produtos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="carrinho.html">
+            <i class="fas fa-shopping-cart"></i> Carrinho
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="app.html">
+            <i class="fas fa-mobile-alt"></i> App
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">
+            <i class="fas fa-sign-in-alt"></i> Conta
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  
+
+
+
+  <section id="produtos" class="produtos">
+    <h2>Produtos</h2>
+    <p>Escolha a pílula que irá desbloquear seu poder!</p>
+
+    <div class="produto-lista">
+
+      <!-- Card 1 -->
+      <div class="produto-card" id="produto-1">
+        <div class="card-inner">
+          <div class="card-front" id="front-1">
+        <img
+          src="https://images.unsplash.com/photo-1591045211820-2fe94117fe18?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBvd2VyfGVufDB8fDB8fHww"
+          alt="Pílula do Poder" id="img-1">
+        <h3 id="titulo-1">Pílula do Poder</h3>
+          </div>
+          <div class="card-back" id="back-1">
+        <p id="descricao-1">Desperte força sobre-humana e realize feitos impossíveis. Com a Pílula do Poder, você poderá levantar objetos pesados, saltar grandes distâncias e proteger quem ama com facilidade. Sinta o poder pulsando em suas veias e torne-se imparável!</p>
+        <div class="acoes" id="acoes-1">
+          <button onclick="favoritarProduto(1)" id="favoritar-1">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(1)" id="carrinho-1">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="produto-card" id="produto-2">
+        <div class="card-inner">
+          <div class="card-front" id="front-2">
+        <img
+          src="https://media.istockphoto.com/id/1908185703/pt/foto/city-road-and-modern-urban-skyline-in-tokyo.webp?a=1&b=1&s=612x612&w=0&k=20&c=6dxC2aEkX-GvDzQDASMEjZrqqUenHQjdp2d6lPV8dik="
+          alt="Pílula da Velocidade" id="img-2">
+        <h3 id="titulo-2">Pílula da Velocidade</h3>
+          </div>
+          <div class="card-back" id="back-2">
+        <p id="descricao-2">Supere qualquer limite de velocidade! Corra mais rápido que o som, desvie de obstáculos em um piscar de olhos e chegue onde quiser em segundos. Ideal para quem não gosta de perder tempo e quer estar sempre à frente.</p>
+        <div class="acoes" id="acoes-2">
+          <button onclick="favoritarProduto(2)" id="favoritar-2">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(2)" id="carrinho-2">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="produto-card" id="produto-3">
+        <div class="card-inner">
+          <div class="card-front" id="front-3">
+        <img
+          src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW52aXNpYmxlfGVufDB8fDB8fHww"
+          alt="Pílula da Invisibilidade" id="img-3">
+        <h3 id="titulo-3">Pílula da Invisibilidade</h3>
+          </div>
+          <div class="card-back" id="back-3">
+        <p id="descricao-3">Desapareça à vontade e mova-se sem ser notado. Seja um fantasma moderno, perfeito para missões secretas, brincadeiras ou para evitar situações indesejadas. Torne-se invisível sempre que precisar de discrição total.</p>
+        <div class="acoes" id="acoes-3">
+          <button onclick="favoritarProduto(3)" id="favoritar-3">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(3)" id="carrinho-3">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="produto-card" id="produto-4">
+        <div class="card-inner">
+          <div class="card-front" id="front-4">
+        <img src="https://plus.unsplash.com/premium_vector-1683134173792-b66811f263b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1lbnRlfGVufDB8fDB8fHww" alt="Pílula da Mente" id="img-4">
+        <h3 id="titulo-4">Pílula Transcedental</h3>
+          </div>
+          <div class="card-back" id="back-4">
+        <p id="descricao-4">Expanda sua mente além dos limites humanos. Acesse novos níveis de consciência, criatividade e compreensão. Ideal para quem busca inovação, autoconhecimento e deseja enxergar o mundo sob uma nova perspectiva.</p>
+        <div class="acoes" id="acoes-4">
+          <button onclick="favoritarProduto(4)" id="favoritar-4">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(4)" id="carrinho-4">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="produto-card" id="produto-5">
+        <div class="card-inner">
+          <div class="card-front" id="front-5">
+        <img src="https://images.unsplash.com/photo-1518281361980-b26bfd556770?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGVtcG98ZW58MHx8MHx8fDA%3D" alt="Pílula do Tempo" id="img-5">
+        <h3 id="titulo-5">Pílula do Tempo</h3>
+          </div>
+          <div class="card-back" id="back-5">
+        <p id="descricao-5">Controle o tempo ao seu redor: acelere, desacelere ou pause momentos importantes. Tenha mais tempo para o que importa e viva experiências únicas, seja para corrigir erros ou aproveitar cada segundo ao máximo.</p>
+        <div class="acoes" id="acoes-5">
+          <button onclick="favoritarProduto(5)" id="favoritar-5">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(5)" id="carrinho-5">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="produto-card" id="produto-6">
+        <div class="card-inner">
+          <div class="card-front" id="front-6">
+        <img src="https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmlyZXxlbnwwfHwwfHx8MA%3D%3D" alt="Pílula do Fogo" id="img-6">
+        <h3 id="titulo-6">Pílula do Fogo</h3>
+          </div>
+          <div class="card-back" id="back-6">
+        <p id="descricao-6">Domine as chamas como um verdadeiro elemental. Acenda fogueiras com um gesto, proteja-se do frio ou crie espetáculos de fogo. Controle total sobre o elemento mais poderoso da natureza, com segurança e precisão.</p>
+        <div class="acoes" id="acoes-6">
+          <button onclick="favoritarProduto(6)" id="favoritar-6">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(6)" id="carrinho-6">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="produto-card" id="produto-7">
+        <div class="card-inner">
+          <div class="card-front" id="front-7">
+        <img src="https://images.unsplash.com/photo-1478265409131-1f65c88f965c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aWNlfGVufDB8fDB8fHww" alt="Pílula do Gelo" id="img-7">
+        <h3 id="titulo-7">Pílula do Gelo</h3>
+          </div>
+          <div class="card-back" id="back-7">
+        <p id="descricao-7">Congele qualquer coisa com um simples toque. Crie esculturas de gelo, resfrie ambientes ou proteja-se do calor extremo. Tenha o poder do inverno em suas mãos, sempre que precisar.</p>
+        <div class="acoes" id="acoes-7">
+          <button onclick="favoritarProduto(7)" id="favoritar-7">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(7)" id="carrinho-7">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="produto-card" id="produto-8">
+        <div class="card-inner">
+          <div class="card-front" id="front-8">
+        <img src="https://plus.unsplash.com/premium_vector-1689096919044-e0e7778bbf15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2F1ZGV8ZW58MHx8MHx8fDA%3D" alt="Pílula da Cura" id="img-8">
+        <h3 id="titulo-8">Pílula da Cura</h3>
+          </div>
+          <div class="card-back" id="back-8">
+        <p id="descricao-8">Regeneração instantânea para feridas, doenças e fadiga. Recupere-se rapidamente de qualquer desafio físico e mantenha-se sempre no auge da saúde. Torne-se praticamente imbatível com a capacidade de cura acelerada.</p>
+        <div class="acoes" id="acoes-8">
+          <button onclick="favoritarProduto(8)" id="favoritar-8">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(8)" id="carrinho-8">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="produto-card" id="produto-9">
+        <div class="card-inner">
+          <div class="card-front" id="front-9">
+        <img src="https://plus.unsplash.com/premium_photo-1682089697749-f5cdd624f21e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHZvYXJ8ZW58MHx8MHx8fDA%3D" alt="Pílula do Voo" id="img-9">
+        <h3 id="titulo-9">Pílula do Voo</h3>
+          </div>
+          <div class="card-back" id="back-9">
+        <p id="descricao-9">Te faz alcançar os céus e voar livremente, sentindo a brisa e admirando paisagens de tirar o fôlego. Desloque-se rapidamente por grandes distâncias e experimente a sensação única de liberdade total.</p>
+        <div class="acoes" id="acoes-9">
+          <button onclick="favoritarProduto(9)" id="favoritar-9">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(9)" id="carrinho-9">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="produto-card" id="produto-10">
+        <div class="card-inner">
+          <div class="card-front" id="front-10">
+        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZW5lcmd5fGVufDB8fDB8fHww" alt="Pílula da Energia" id="img-10">
+        <h3 id="titulo-10">Pílula da Energia</h3>
+          </div>
+          <div class="card-back" id="back-10">
+        <p id="descricao-10">Fique elétrico! Tenha energia ilimitada por 24h, sem cansaço ou sono. Ideal para dias intensos, maratonas de estudo ou trabalho, e para quem precisa de disposição extra para qualquer desafio.</p>
+        <div class="acoes" id="acoes-10">
+          <button onclick="favoritarProduto(10)" id="favoritar-10">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(10)" id="carrinho-10">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="produto-card" id="produto-11">
+        <div class="card-inner">
+          <div class="card-front" id="front-11">
+        <img src="https://plus.unsplash.com/premium_vector-1683141228251-e07ff7ab1073?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVsZXBhdGlhfGVufDB8fDB8fHww" alt="Pílula da Telepatia" id="img-11">
+        <h3 id="titulo-11">Pílula da Telepatia</h3>
+          </div>
+          <div class="card-back" id="back-11">
+        <p id="descricao-11">Leia pensamentos, compartilhe ideias sem falar e compreenda sentimentos profundos. Comunique-se de forma instantânea e silenciosa, criando conexões únicas com quem desejar.</p>
+        <div class="acoes" id="acoes-11">
+          <button onclick="favoritarProduto(11)" id="favoritar-11">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(11)" id="carrinho-11">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="produto-card" id="produto-12">
+        <div class="card-inner">
+          <div class="card-front" id="front-12">
+        <img src="https://plus.unsplash.com/premium_photo-1681426650328-8fc0a124b377?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNsb25lc3xlbnwwfHwwfHx8MA%3D%3D" alt="Pílula da Multiplicação" id="img-12">
+        <h3 id="titulo-12">Pílula da Multiplicação</h3>
+          </div>
+          <div class="card-back" id="back-12">
+        <p id="descricao-12">Crie cópias perfeitas de si mesmo para realizar múltiplas tarefas ao mesmo tempo. Domine tudo ao seu redor, aumente sua produtividade e esteja em vários lugares simultaneamente!</p>
+        <div class="acoes" id="acoes-12">
+          <button onclick="favoritarProduto(12)" id="favoritar-12">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(12)" id="carrinho-12">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 13 -->
+      <div class="produto-card" id="produto-13">
+        <div class="card-inner">
+          <div class="card-front" id="front-13">
+        <img src="https://images.unsplash.com/photo-1611559981789-3eff14488757?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWFnbmV0b3xlbnwwfHwwfHx8MA%3D%3D" alt="Pílula do Magnetismo" id="img-13">
+        <h3 id="titulo-13">Pílula do Magnetismo</h3>
+          </div>
+          <div class="card-back" id="back-13">
+        <p id="descricao-13">Controle metais com a força da mente. Atrai, repele ou molde objetos metálicos ao seu redor, tornando-se um verdadeiro ímã humano. Ideal para engenheiros, inventores ou quem deseja habilidades únicas.</p>
+        <div class="acoes" id="acoes-13">
+          <button onclick="favoritarProduto(13)" id="favoritar-13">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(13)" id="carrinho-13">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 14 -->
+      <div class="produto-card" id="produto-14">
+        <div class="card-inner">
+          <div class="card-front" id="front-14">
+        <img src="https://images.unsplash.com/photo-1553126404-5993cea78871?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhbXVmbGFnZW18ZW58MHx8MHx8fDA%3D" alt="Pílula da Camuflagem" id="img-14">
+        <h3 id="titulo-14">Pílula da Camuflagem</h3>
+          </div>
+          <div class="card-back" id="back-14">
+        <p id="descricao-14">Se mescle ao ambiente e torne-se praticamente invisível aos olhos humanos e eletrônicos. Perfeito para missões de espionagem, aventuras na natureza ou para quem deseja passar despercebido em qualquer situação.</p>
+        <div class="acoes" id="acoes-14">
+          <button onclick="favoritarProduto(14)" id="favoritar-14">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(14)" id="carrinho-14">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 15 -->
+      <div class="produto-card" id="produto-15">
+        <div class="card-inner">
+          <div class="card-front" id="front-15">
+        <img src="https://plus.unsplash.com/premium_photo-1669077047119-6dbaa3ea8b73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5maW5pdG98ZW58MHx8MHx8fDA%3D" alt="Pílula da Imortalidade" id="img-15">
+        <h3 id="titulo-15">Pílula da Imortalidade</h3>
+          </div>
+          <div class="card-back" id="back-15">
+        <p id="descricao-15">Viva para sempre e nunca tema o fim. Rejuvenesça, cure-se de qualquer doença e aproveite a eternidade para realizar todos os seus sonhos e projetos. O fim não é mais uma opção para você.</p>
+        <div class="acoes" id="acoes-15">
+          <button onclick="favoritarProduto(15)" id="favoritar-15">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(15)" id="carrinho-15">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 16 -->
+      <div class="produto-card" id="produto-16">
+        <div class="card-inner">
+          <div class="card-front" id="front-16">
+        <img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGludGVsaWdlbmNpYXxlbnwwfHwwfHx8MA%3D%3D" alt="Pílula do Sexo" id="img-16">
+        <h3 id="titulo-16">Pílula da Inteligência Suprema</h3>
+          </div>
+          <div class="card-back" id="back-16">
+        <p id="descricao-16">Alcance genialidade instantânea, resolva qualquer desafio mental, aprenda novos idiomas em minutos e encontre soluções inovadoras para qualquer problema. Torne-se um verdadeiro gênio e destaque-se em qualquer área do conhecimento!</p>
+        <div class="acoes" id="acoes-16">
+          <button onclick="favoritarProduto(16)" id="favoritar-16">❤️ Favoritar</button>
+          <button onclick="adicionarAoCarrinho(16)" id="carrinho-16">🛒 Adicionar ao carrinho</button>
+        </div>
+          </div>
+        </div>
+      </div>
+
+        </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <h1>Mais produtos em breve...</h1>
+  </section>
+
+
+  <footer>
+    <p>&copy; 2025 Projeto Gênesis. Todos os direitos reservados.</p>
+  </footer>
+
+
+
+  <!-- Bootstrap JS (no final do body) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="script/script.js"></script>
+
+  <script type="module">
+  // Importa os módulos do Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+  // Config Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDCUdLUtSM0K1AcoKLNTOfawQ9mD348aVc",
+    authDomain: "projeto---genesis.firebaseapp.com",
+    projectId: "projeto---genesis",
+  };
+
+  // Inicializa Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // Função para adicionar ao carrinho (Firebase)
+  function adicionarAoCarrinhoFirebase(idProduto, nomeProduto) {
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        alert("Você precisa estar logado para adicionar ao carrinho.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const carrinhoRef = doc(db, "carrinhos", user.uid);
+      const docSnap = await getDoc(carrinhoRef);
+
+      const produto = { id: idProduto, nome: nomeProduto };
+
+      if (docSnap.exists()) {
+        await updateDoc(carrinhoRef, {
+          produtos: arrayUnion(produto),
+        });
+      } else {
+        await setDoc(carrinhoRef, {
+          produtos: [produto],
+        });
+      }
+
+      alert("Produto adicionado ao carrinho!");
+      atualizarBadgeCarrinho();
+    });
+  }
+
+  // Função para favoritar produto (Firebase)
+  function favoritarProdutoFirebase(idProduto) {
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        alert("Você precisa estar logado para favoritar um produto.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const favoritoRef = doc(db, "favoritos", user.uid);
+
+      await setDoc(favoritoRef, {
+        produtos: arrayUnion(idProduto),
+      }, { merge: true });
+
+      alert("Produto favoritado!");
+    });
+  }
+
+  // Torna funções globais para uso no HTML
+  window.adicionarAoCarrinhoFirebase = adicionarAoCarrinhoFirebase;
+  window.favoritarProdutoFirebase = favoritarProdutoFirebase;
+
+  // Filtro de busca
+  document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+
+    const produtos = document.querySelectorAll(".produto-card");
+    let encontrou = false;
+
+    produtos.forEach(produto => {
+      const texto = produto.textContent.toLowerCase();
+      if (texto.includes(searchTerm)) {
+        produto.style.display = "block";
+        encontrou = true;
+      } else {
+        produto.style.display = "none";
+      }
+    });
+
+    if (!encontrou) {
+      alert("Nenhum produto encontrado com esse nome.");
+    }
+  });
+
+  // Salva produto favorito no localStorage
+  function favoritarProduto(id) {
+    const card = document.getElementById(`front-${id}`);
+    const nome = card.querySelector('h3').textContent;
+    const img = card.querySelector('img').src;
+    const descricao = document.getElementById(`descricao-${id}`)?.textContent || '';
+    const favorito = { id, nome, img, descricao };
+
+    let favoritos = JSON.parse(localStorage.getItem('produtosFavoritos') || '[]');
+    if (!favoritos.some(p => p.id === id)) {
+      favoritos.push(favorito);
+      localStorage.setItem('produtosFavoritos', JSON.stringify(favoritos));
+      alert('Produto favoritado!');
+    } else {
+      alert('Produto já está nos favoritos!');
+    }
+  }
+
+  // Salva produto no carrinho no localStorage
+  function adicionarAoCarrinho(id) {
+  const card = document.getElementById(`front-${id}`);
+  const nome = card.querySelector('h3').textContent;
+  const img = card.querySelector('img').src;
+  const descricao = document.getElementById(`descricao-${id}`)?.textContent || '';
+  const produto = { id, nome, img, descricao };
+
+  let carrinho = JSON.parse(localStorage.getItem('produtosCarrinho') || '[]');
+  if (!carrinho.some(p => p.id === id)) {
+     carrinho.push(produto);
+     localStorage.setItem('produtosCarrinho', JSON.stringify(carrinho));
+     alert('Produto adicionado ao carrinho!');
+   } else {
+     alert('Produto já está no carrinho!');
+   }
+  atualizarBadgeCarrinho();
+}
+  // Atualiza o badge do carrinho na navbar
+  function atualizarBadgeCarrinho() {
+    let carrinho = JSON.parse(localStorage.getItem('produtosCarrinho') || '[]');
+    let badge = document.getElementById('carrinho-badge');
+    if (!badge) {
+      // Cria badge se não existir
+      const carrinhoLink = document.querySelector('a[href="carrinho.html"]');
+      if (carrinhoLink) {
+        badge = document.createElement('span');
+        badge.id = 'carrinho-badge';
+        badge.style.background = '#17a2b8';
+        badge.style.color = '#fff';
+        badge.style.borderRadius = '50%';
+        badge.style.padding = '2px 8px';
+        badge.style.fontSize = '12px';
+        badge.style.marginLeft = '5px';
+        carrinhoLink.appendChild(badge);
+      }
+    }
+    if (badge) {
+      badge.textContent = carrinho.length;
+      badge.style.display = carrinho.length > 0 ? 'inline-block' : 'none';
+    }
+  }
+
+  // Inicializa badge ao carregar a página
+  document.addEventListener('DOMContentLoaded', atualizarBadgeCarrinho);
+
+  // Torna funções globais para uso no HTML
+  window.adicionarAoCarrinho = adicionarAoCarrinho;
+  window.favoritarProduto = favoritarProduto;
+  </script>
+
+
+
+</body>
+</html>

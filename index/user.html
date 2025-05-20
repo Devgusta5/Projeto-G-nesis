@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Firebase App -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap + Font Awesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Gênesis - Produtos</title>
+  <link rel="stylesheet" href="../css/user.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="../index.html">X - GÊNESIS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html"><i class="fas fa-box-open"></i> Produtos</a></li>
+        <li class="nav-item"><a class="nav-link" href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+        <li class="nav-item"><a class="nav-link" href="app.html"><i class="fas fa-mobile-alt"></i> App</a></li>
+        <li class="nav-item active"><a class="nav-link" href="user.html"><i class="fas fa-sign-in-alt"></i> Conta</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Conteúdo -->
+  <div class="container mt-4">
+    <h1>Bem-vindo(a), <span id="nomeUsuario"></span>!</h1>
+    <p id="statusLogin">Verificando login...</p>
+    <button id="botaoLogout" class="botao-sair" style="display: none;" onclick="logout()">Sair</button>
+    
+
+    <hr>
+    <h2>Seus Favoritos</h2>
+    <div class="produto-lista" id="favoritosArea">
+      <!-- Produtos favoritos -->
+    </div>
+  </div>
+
+  <!-- Firebase + lógica -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDCUdLUtSM0K1AcoKLNTOfawQ9mD348aVc",
+      authDomain: "projeto---genesis.firebaseapp.com",
+      projectId: "projeto---genesis"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const nomeUsuarioEl = document.getElementById('nomeUsuario');
+    const statusLoginEl = document.getElementById('statusLogin');
+    const botaoLogout = document.getElementById('botaoLogout');
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // Mostrar nome salvo localmente ou pedir nome
+        let nome = localStorage.getItem('nomeUsuario');
+        if (!nome) {
+          nome = prompt('Como você gostaria de ser chamado(a)?') || 'usuário';
+          localStorage.setItem('nomeUsuario', nome);
+        }
+        nomeUsuarioEl.textContent = nome;
+
+        statusLoginEl.textContent = 'Você está logado no sistema.';
+        botaoLogout.style.display = 'inline-block';
+
+        // Mostrar favoritos do LocalStorage
+        const favoritosArea = document.getElementById('favoritosArea');
+        let produtosFavoritos = localStorage.getItem('produtosFavoritos');
+        if (produtosFavoritos) {
+          try {
+            produtosFavoritos = JSON.parse(produtosFavoritos);
+            if (Array.isArray(produtosFavoritos) && produtosFavoritos.length > 0) {
+              favoritosArea.innerHTML = produtosFavoritos.map(produto =>
+  `<div class="produto-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="${produto.img}" alt="${produto.nome}" />
+        <h3>${produto.nome || 'Produto sem nome'}</h3>
+      </div>
+      <div class="card-back">
+        <p>${produto.descricao || 'Sem descrição.'}</p>
+        <!-- Você pode adicionar botões de ação aqui se quiser -->
+      </div>
+    </div>
+  </div>`
+).join('');
+            } else {
+              favoritosArea.innerHTML = '<p>Nenhum produto favorito adicionado.</p>';
+            }
+          } catch (e) {
+            favoritosArea.innerHTML = '<p>Erro ao carregar favoritos.</p>';
+          }
+        } else {
+          favoritosArea.innerHTML = '<p>Nenhum produto favorito adicionado.</p>';
+        }
+      } else {
+        nomeUsuarioEl.textContent = 'visitante';
+        statusLoginEl.innerHTML = `Você não está logado no sistema. 
+      <br><br><button class="botao-sair" onclick="window.location.href='login.html'">Fazer login</button>`;
+        botaoLogout.style.display = 'none';
+        document.getElementById('favoritosArea').innerHTML = '<p>Faça login para ver seus favoritos.</p>';
+      }
+    });
+
+    // Função de logout usando Firebase Auth
+    window.logout = async function() {
+      try {
+        await signOut(auth);
+        localStorage.removeItem('usuarioLogado');
+        alert('Você saiu da sua conta.');
+        window.location.href = 'login.html';
+      } catch (error) {
+        alert('Erro ao sair: ' + error.message);
+      }
+    }
+  </script>
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Projeto Gênesis. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
