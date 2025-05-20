@@ -76,6 +76,20 @@
     const statusLoginEl = document.getElementById('statusLogin');
     const botaoLogout = document.getElementById('botaoLogout');
 
+      // Função para remover produto do carrinho (localStorage)
+  function removerProdutoLocal(produtoId) {
+  let carrinho = localStorage.getItem('produtosCarrinho');
+  if (carrinho) {
+    carrinho = JSON.parse(carrinho);
+
+    // Converta os dois valores para o mesmo tipo antes de comparar
+    carrinho = carrinho.filter(produto => String(produto.id) !== String(produtoId));
+
+    localStorage.setItem('produtosCarrinho', JSON.stringify(carrinho));
+    mostrarCarrinho();
+  }
+}
+
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         // Mostrar nome salvo localmente ou pedir nome
@@ -106,6 +120,9 @@
       <div class="card-back">
         <p>${produto.descricao || 'Sem descrição.'}</p>
         <!-- Você pode adicionar botões de ação aqui se quiser -->
+          <button class="btn btn-danger btn-sm ml-2" onclick="removerProdutoLocal('${produto.id}')">
+            <i class="fas fa-trash"></i> Excluir
+          </button>
       </div>
     </div>
   </div>`
@@ -139,6 +156,35 @@
         alert('Erro ao sair: ' + error.message);
       }
     }
+    function teste(){
+      console.log("O botão foi clicado");
+    }
+    // Mostra produtos do carrinho salvos no localStorage
+    function mostrarCarrinho() {
+  const lista = document.getElementById('lista-carrinho');
+  let carrinho = localStorage.getItem('produtosCarrinho');
+  if (carrinho) {
+    carrinho = JSON.parse(carrinho);
+    if (carrinho.length > 0) {
+      lista.innerHTML = carrinho.map(prod =>
+        `<div class="produto-item">
+          <img src="${prod.img}" alt="${prod.nome}" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-bottom:8px;">
+          <span><strong>${prod.nome}</strong></span><br>
+          <span style="font-size:0.95em;">${prod.descricao || ''}</span><br>
+          <button class="btn btn-danger btn-sm ml-2" onclick="removerProdutoLocal('${prod.id}')">
+            <i class="fas fa-trash"></i> Excluir
+          </button>
+        </div>`
+      ).join('');
+    } else {
+      lista.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    }
+  } else {
+    lista.innerHTML = '<p>Seu carrinho está vazio.</p>';
+  }
+}
+
+
   </script>
   
 
@@ -150,5 +196,6 @@
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 </html>
